@@ -11,64 +11,127 @@
 :root{
   --gold:#f2c46f;
   --gold2:#b9813b;
-  --gold3:#7f4c1f;
   --cream:#f7e7c1;
-  --muted:#d7c29c;
   --red:#b32616;
-  --red2:#6f0d07;
-  --red3:#350604;
   --dark:#120806;
-  --dark2:#080302;
-  --wood:#28150c;
   --line:rgba(242,196,111,.36);
-  --glow:rgba(239,98,28,.55);
 }
 
 *{
   box-sizing:border-box;
 }
 
-html{
-  scroll-behavior:smooth;
+html,
+body{
+  margin:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
   background:#090300;
 }
 
 body{
-  margin:0;
-  min-height:100vh;
-  overflow-x:hidden;
   color:var(--cream);
   font-family:Arial,Helvetica,sans-serif;
-  background:
-    radial-gradient(circle at 50% -10%,rgba(152,34,12,.85) 0,rgba(81,15,7,.72) 24%,rgba(38,8,4,.96) 53%,#080201 100%);
 }
 
-/* ================================
+/* =========================================
+   INTERNAL SCROLL AREA
+   This replaces the iframe scrollbar.
+========================================= */
+
+.sidebar-scroll{
+  position:relative;
+  width:100%;
+  height:100vh;
+
+  overflow-y:auto;
+  overflow-x:hidden;
+
+  scrollbar-width:thin;
+  scrollbar-color:#9a5726 #160804;
+
+  background:
+    radial-gradient(
+      circle at 50% -10%,
+      rgba(152,34,12,.88) 0,
+      rgba(81,15,7,.75) 24%,
+      rgba(38,8,4,.97) 53%,
+      #080201 100%
+    );
+}
+
+/* Chrome / Edge / Safari */
+
+.sidebar-scroll::-webkit-scrollbar{
+  width:5px;
+}
+
+.sidebar-scroll::-webkit-scrollbar-track{
+  background:#160804;
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb{
+  background:
+    linear-gradient(
+      180deg,
+      #e0a14f,
+      #9a5726 50%,
+      #5a1e0c
+    );
+
+  border-radius:10px;
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb:hover{
+  background:
+    linear-gradient(
+      180deg,
+      #f2c46f,
+      #bd672e 50%,
+      #762b12
+    );
+}
+
+/* =========================================
    EMBERS
-================================ */
+========================================= */
 
 #embers{
   position:fixed;
   inset:0;
+
   width:100%;
   height:100%;
+
   z-index:0;
+
   pointer-events:none;
 }
+
+/* =========================================
+   MAIN SIDEBAR
+========================================= */
 
 .sidebar{
   position:relative;
   z-index:1;
+
   width:100%;
   max-width:340px;
+
   margin:0 auto;
+
   padding:10px 8px 18px;
+
   overflow:hidden;
+
   border:1px solid rgba(205,143,65,.58);
   border-radius:16px;
 
   background:
-    linear-gradient(180deg,
+    linear-gradient(
+      180deg,
       rgba(86,19,9,.97),
       rgba(45,10,5,.98) 25%,
       rgba(23,6,3,.99) 58%,
@@ -81,13 +144,9 @@ body{
     inset 0 1px 0 rgba(255,220,150,.10);
 }
 
-/* ================================
-   SHARED HOVER / FLOAT
-================================ */
-
-.float{
-  animation:floatBoard 4.2s ease-in-out infinite;
-}
+/* =========================================
+   HOVER POP
+========================================= */
 
 .pop{
   transition:
@@ -95,22 +154,31 @@ body{
     filter .26s ease,
     box-shadow .26s ease,
     border-color .26s ease;
+
   transform-origin:center;
   will-change:transform;
 }
 
 .pop:hover{
-  transform:translateY(-6px) scale(1.035);
+  transform:
+    translateY(-6px)
+    scale(1.035);
+
   filter:
     brightness(1.08)
     drop-shadow(0 12px 18px rgba(0,0,0,.48))
     drop-shadow(0 0 12px rgba(226,80,25,.24));
 }
 
+/* =========================================
+   ANIMATIONS
+========================================= */
+
 @keyframes floatBoard{
   0%,100%{
     transform:translateY(0);
   }
+
   50%{
     transform:translateY(-5px);
   }
@@ -118,19 +186,29 @@ body{
 
 @keyframes logoFloat{
   0%,100%{
-    transform:translateY(0) rotate(-.4deg);
+    transform:
+      translateY(0)
+      rotate(-.4deg);
   }
+
   50%{
-    transform:translateY(-7px) rotate(.4deg);
+    transform:
+      translateY(-7px)
+      rotate(.4deg);
   }
 }
 
 @keyframes duelFloat{
   0%,100%{
-    transform:translateY(0) scale(1);
+    transform:
+      translateY(0)
+      scale(1);
   }
+
   50%{
-    transform:translateY(-6px) scale(1.012);
+    transform:
+      translateY(-6px)
+      scale(1.012);
   }
 }
 
@@ -140,6 +218,7 @@ body{
       0 10px 24px rgba(0,0,0,.25),
       0 0 0 rgba(242,196,111,0);
   }
+
   50%{
     box-shadow:
       0 14px 28px rgba(0,0,0,.34),
@@ -147,47 +226,58 @@ body{
   }
 }
 
-/* ================================
+/* =========================================
    HERO
-================================ */
+========================================= */
 
 .hero{
   position:relative;
+
   text-align:center;
+
   padding:10px 10px 12px;
+
   border-radius:13px;
 
   background:
-    radial-gradient(circle at 50% 0,
+    radial-gradient(
+      circle at 50% 0,
       rgba(223,80,25,.35),
       rgba(88,19,8,.20) 45%,
       rgba(16,5,3,.18) 100%
     );
 
-  border:1px solid rgba(203,126,55,.28);
+  border:
+    1px solid rgba(203,126,55,.28);
 
   box-shadow:
     inset 0 0 24px rgba(255,104,30,.05),
     0 10px 22px rgba(0,0,0,.20);
 
-  animation:goldPulse 5s ease-in-out infinite;
+  animation:
+    goldPulse 5s ease-in-out infinite;
 }
 
 .hero:hover{
-  border-color:rgba(242,196,111,.55);
+  border-color:
+    rgba(242,196,111,.55);
 }
 
 .logo{
   width:122px;
   max-width:44%;
   height:auto;
+
   display:block;
+
   margin:0 auto 4px;
+
   filter:
     drop-shadow(0 8px 14px rgba(0,0,0,.55))
     drop-shadow(0 0 8px rgba(201,90,28,.16));
 
-  animation:logoFloat 4.8s ease-in-out infinite;
+  animation:
+    logoFloat 4.8s ease-in-out infinite;
 
   transition:
     transform .28s ease,
@@ -195,18 +285,29 @@ body{
 }
 
 .logo:hover{
-  transform:translateY(-7px) scale(1.08);
+  transform:
+    translateY(-7px)
+    scale(1.08);
+
   filter:
     drop-shadow(0 14px 20px rgba(0,0,0,.55))
     drop-shadow(0 0 16px rgba(242,196,111,.28));
 }
 
 .title{
-  font-family:Georgia,"Times New Roman",serif;
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
   font-size:25px;
+
   line-height:1;
+
   font-weight:900;
+
   letter-spacing:.6px;
+
   color:var(--gold);
 
   text-shadow:
@@ -216,35 +317,56 @@ body{
 
 .subtitle{
   font-size:11px;
+
   font-weight:800;
+
   letter-spacing:3px;
+
   color:#fff;
+
   margin-top:5px;
 }
 
 .motto{
   margin:10px auto 0;
+
   padding:9px 8px;
-  border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);
-  font-family:Georgia,"Times New Roman",serif;
+
+  border-top:
+    1px solid var(--line);
+
+  border-bottom:
+    1px solid var(--line);
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
   font-style:italic;
+
   font-size:13px;
+
   line-height:1.45;
 }
 
-/* ================================
-   DISPATCH
-================================ */
+/* =========================================
+   FRONTIER DISPATCH
+========================================= */
 
 .dispatch{
   margin:10px 0 12px;
+
   padding:10px 8px;
-  border:1px solid rgba(185,129,59,.50);
+
+  border:
+    1px solid rgba(185,129,59,.50);
+
   border-radius:12px;
 
   background:
-    linear-gradient(180deg,
+    linear-gradient(
+      180deg,
       rgba(62,25,11,.94),
       rgba(22,8,5,.90)
     );
@@ -253,25 +375,42 @@ body{
     0 10px 24px rgba(0,0,0,.25),
     inset 0 1px 0 rgba(255,214,138,.05);
 
-  animation:floatBoard 5.4s ease-in-out infinite;
+  animation:
+    floatBoard 5.4s ease-in-out infinite;
 }
 
 .dispatch:hover{
-  border-color:rgba(242,196,111,.70);
+  border-color:
+    rgba(242,196,111,.70);
 }
 
 .dispatch h2{
   margin:0 0 7px;
-  font:800 12px/1.1 Arial,sans-serif;
+
+  font:
+    800 12px/1.1 Arial,sans-serif;
+
   letter-spacing:1.5px;
+
   color:var(--gold);
-  text-shadow:0 0 7px rgba(242,196,111,.15);
+
+  text-align:center;
+
+  text-shadow:
+    0 0 7px rgba(242,196,111,.15);
 }
 
 marquee{
+  display:block;
+
   height:126px;
+
   line-height:1.55;
+
   font-size:12px;
+
+  text-align:center;
+
   color:#ead8ba;
 }
 
@@ -279,59 +418,83 @@ marquee{
   color:var(--gold);
 }
 
-/* ================================
+/* =========================================
    QUICK LINKS
-================================ */
+========================================= */
 
 .quicklinks{
   display:grid;
-  grid-template-columns:1fr 1fr;
+
+  grid-template-columns:
+    1fr 1fr;
+
   gap:7px;
+
   margin:0 0 14px;
+
   padding:9px;
+
   border-radius:12px;
 
   background:
-    linear-gradient(180deg,
+    linear-gradient(
+      180deg,
       rgba(48,15,8,.88),
       rgba(19,6,4,.94)
     );
 
-  border:1px solid rgba(185,129,59,.32);
+  border:
+    1px solid rgba(185,129,59,.32);
 
-  animation:floatBoard 4.9s ease-in-out infinite;
+  animation:
+    floatBoard 4.9s ease-in-out infinite;
 }
 
 .quicklinks:hover{
-  border-color:rgba(242,196,111,.50);
+  border-color:
+    rgba(242,196,111,.50);
 }
 
 .btn{
   position:relative;
+
   overflow:hidden;
 
   display:flex;
+
   align-items:center;
   justify-content:center;
 
   min-height:44px;
+
   padding:9px 7px;
 
   border-radius:10px;
-  border:1px solid #d3a05a;
+
+  border:
+    1px solid #d3a05a;
 
   background:
-    linear-gradient(180deg,#965826,#673417);
+    linear-gradient(
+      180deg,
+      #965826,
+      #673417
+    );
 
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.14),
     0 6px 15px rgba(0,0,0,.28);
 
   color:#fff;
+
   text-decoration:none;
+
   font-weight:900;
+
   font-size:11px;
+
   letter-spacing:.3px;
+
   text-align:center;
 
   transition:
@@ -343,13 +506,17 @@ marquee{
 
 .btn::before{
   content:"";
+
   position:absolute;
+
   top:-60%;
   left:-60%;
+
   width:42%;
   height:220%;
 
-  transform:rotate(24deg);
+  transform:
+    rotate(24deg);
 
   background:
     linear-gradient(
@@ -359,7 +526,8 @@ marquee{
       transparent
     );
 
-  transition:left .45s ease;
+  transition:
+    left .45s ease;
 }
 
 .btn:hover::before{
@@ -367,8 +535,12 @@ marquee{
 }
 
 .btn:hover{
-  transform:translateY(-5px) scale(1.045);
-  filter:brightness(1.16);
+  transform:
+    translateY(-5px)
+    scale(1.045);
+
+  filter:
+    brightness(1.16);
 
   border-color:#ffd890;
 
@@ -378,21 +550,26 @@ marquee{
     0 0 15px rgba(232,84,25,.24);
 }
 
-/* ================================
+/* =========================================
    MOST WANTED BOARD
-================================ */
+========================================= */
 
 .wanted-wrap{
   position:relative;
+
   width:100%;
+
   aspect-ratio:1168/1346;
+
   margin:1px auto 12px;
+
   padding:2px;
 
   border-radius:14px;
 
   background:
-    radial-gradient(circle at 50% 25%,
+    radial-gradient(
+      circle at 50% 25%,
       rgba(144,30,13,.38),
       rgba(19,5,3,.12) 58%,
       rgba(0,0,0,.28) 100%
@@ -401,7 +578,8 @@ marquee{
   filter:
     drop-shadow(0 13px 20px rgba(0,0,0,.50));
 
-  animation:floatBoard 4.6s ease-in-out infinite;
+  animation:
+    floatBoard 4.6s ease-in-out infinite;
 
   transition:
     transform .28s ease,
@@ -409,7 +587,9 @@ marquee{
 }
 
 .wanted-wrap:hover{
-  transform:translateY(-8px) scale(1.035);
+  transform:
+    translateY(-8px)
+    scale(1.035);
 
   filter:
     drop-shadow(0 18px 26px rgba(0,0,0,.55))
@@ -418,6 +598,7 @@ marquee{
 
 .wanted-art{
   position:absolute;
+
   inset:0;
 
   width:100%;
@@ -426,19 +607,26 @@ marquee{
   object-fit:contain;
 
   pointer-events:none;
+
   user-select:none;
 }
+
+/* Member overlay */
 
 .members{
   position:absolute;
 
   left:23.3%;
   right:18.2%;
+
   top:34.4%;
   bottom:16.9%;
 
   display:grid;
-  grid-template-rows:repeat(5,1fr);
+
+  grid-template-rows:
+    repeat(5,1fr);
+
   gap:1.9%;
 
   z-index:2;
@@ -446,8 +634,12 @@ marquee{
 
 .member{
   display:grid;
-  grid-template-columns:21% 1fr;
+
+  grid-template-columns:
+    21% 1fr;
+
   align-items:center;
+
   min-width:0;
 
   border-radius:8px;
@@ -459,7 +651,9 @@ marquee{
 }
 
 .member:hover{
-  transform:translateX(4px) scale(1.025);
+  transform:
+    translateX(4px)
+    scale(1.025);
 
   background:
     linear-gradient(
@@ -468,19 +662,28 @@ marquee{
       rgba(178,48,18,.07)
     );
 
-  filter:brightness(1.12);
+  filter:
+    brightness(1.12);
 }
 
 .avatar{
   width:82%;
+
   aspect-ratio:1;
+
   border-radius:50%;
+
   object-fit:cover;
 
   background:
-    radial-gradient(circle at 35% 30%,#4b4b4b,#151515 70%);
+    radial-gradient(
+      circle at 35% 30%,
+      #4b4b4b,
+      #151515 70%
+    );
 
-  border:1px solid rgba(242,196,111,.45);
+  border:
+    1px solid rgba(242,196,111,.45);
 
   justify-self:center;
 
@@ -494,9 +697,11 @@ marquee{
 }
 
 .member:hover .avatar{
-  transform:scale(1.08);
+  transform:
+    scale(1.08);
 
-  border-color:rgba(255,218,137,.85);
+  border-color:
+    rgba(255,218,137,.85);
 
   box-shadow:
     0 4px 10px rgba(0,0,0,.45),
@@ -505,23 +710,31 @@ marquee{
 
 .member-copy{
   min-width:0;
+
   padding-left:4px;
+
   text-align:left;
 }
 
 .username{
-  font-family:Georgia,"Times New Roman",serif;
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
 
   color:#f8e4b1;
 
   font-weight:900;
 
-  font-size:clamp(11px,3.9vw,16px);
+  font-size:
+    clamp(11px,3.9vw,16px);
 
   line-height:1.05;
 
   white-space:nowrap;
+
   overflow:hidden;
+
   text-overflow:ellipsis;
 
   text-shadow:
@@ -533,12 +746,15 @@ marquee{
 
   color:#cbb894;
 
-  font-size:clamp(8px,2.5vw,10px);
+  font-size:
+    clamp(8px,2.5vw,10px);
 
   font-weight:700;
 
   white-space:nowrap;
+
   overflow:hidden;
+
   text-overflow:ellipsis;
 }
 
@@ -549,19 +765,24 @@ marquee{
 
   left:23%;
   right:17%;
+
   top:54%;
 
-  transform:translateY(-50%);
+  transform:
+    translateY(-50%);
 
   padding:9px 7px;
 
   border-radius:9px;
 
-  background:rgba(12,6,4,.82);
+  background:
+    rgba(12,6,4,.82);
 
-  border:1px solid rgba(242,196,111,.4);
+  border:
+    1px solid rgba(242,196,111,.4);
 
   font-size:11px;
+
   line-height:1.35;
 
   color:#f0d8aa;
@@ -569,12 +790,13 @@ marquee{
   text-align:center;
 }
 
-/* ================================
-   DUEL
-================================ */
+/* =========================================
+   DUEL ARTWORK
+========================================= */
 
 .duel-stage{
   margin-top:4px;
+
   padding:8px 0 2px;
 
   border-radius:12px;
@@ -586,9 +808,11 @@ marquee{
       rgba(5,2,1,.38)
     );
 
-  border-top:1px solid rgba(185,129,59,.20);
+  border-top:
+    1px solid rgba(185,129,59,.20);
 
-  animation:floatBoard 5.8s ease-in-out infinite;
+  animation:
+    floatBoard 5.8s ease-in-out infinite;
 }
 
 .duel-stage:hover{
@@ -602,9 +826,11 @@ marquee{
 
 .duel{
   width:106%;
+
   max-width:none;
 
-  margin:4px -3% 0;
+  margin:
+    4px -3% 0;
 
   display:block;
 
@@ -614,7 +840,8 @@ marquee{
     drop-shadow(0 10px 14px rgba(0,0,0,.58))
     drop-shadow(0 0 7px rgba(213,60,22,.10));
 
-  animation:duelFloat 4.4s ease-in-out infinite;
+  animation:
+    duelFloat 4.4s ease-in-out infinite;
 
   transition:
     transform .28s ease,
@@ -622,26 +849,31 @@ marquee{
 }
 
 .duel-stage:hover .duel{
-  transform:translateY(-6px) scale(1.045);
+  transform:
+    translateY(-6px)
+    scale(1.045);
 
   filter:
     drop-shadow(0 15px 20px rgba(0,0,0,.62))
     drop-shadow(0 0 15px rgba(235,82,27,.20));
 }
 
-/* ================================
+/* =========================================
    FOOTER
-================================ */
+========================================= */
 
 .footer{
   text-align:center;
 
   margin-top:-2px;
+
   padding-top:8px;
 
-  border-top:1px solid rgba(185,129,59,.28);
+  border-top:
+    1px solid rgba(185,129,59,.28);
 
   font-size:9px;
+
   letter-spacing:1.1px;
 
   color:#a99070;
@@ -665,11 +897,12 @@ marquee{
   margin:0 4px;
 }
 
-/* ================================
+/* =========================================
    MOBILE
-================================ */
+========================================= */
 
 @media(max-width:280px){
+
   .sidebar{
     padding-left:3px;
     padding-right:3px;
@@ -685,16 +918,22 @@ marquee{
 
   .btn{
     font-size:10px;
-    padding:8px 4px;
+
+    padding:
+      8px 4px;
   }
 
   .members{
     left:23.5%;
     right:17.7%;
   }
+
 }
 
+/* Respect accessibility setting */
+
 @media(prefers-reduced-motion:reduce){
+
   *,
   *::before,
   *::after{
@@ -702,6 +941,7 @@ marquee{
     transition:none !important;
     scroll-behavior:auto !important;
   }
+
 }
 </style>
 </head>
@@ -710,16 +950,23 @@ marquee{
 
 <canvas id="embers"></canvas>
 
+<div class="sidebar-scroll">
+
 <main class="sidebar">
 
+  <!-- HERO -->
+
   <header class="hero pop">
+
     <img
       class="logo"
       src="assets/panhandle-logo.png"
       alt="Panhandle Gunslingers"
     >
 
-    <div class="title">PANHANDLE</div>
+    <div class="title">
+      PANHANDLE
+    </div>
 
     <div class="subtitle">
       GUNSLINGERS
@@ -729,9 +976,14 @@ marquee{
       Team. Friends. Chess.<br>
       Together, the sky is the limit.
     </div>
+
   </header>
 
+
+  <!-- FRONTIER DISPATCH -->
+
   <section class="dispatch pop">
+
     <h2>
       ★ FRONTIER DISPATCH ★
     </h2>
@@ -744,7 +996,7 @@ marquee{
     >
 
       <b>WELCOME GUNSLINGERS</b><br>
-      Welcome to Panhandle Gunslingers.
+      Welcome to Panhandle Gunslingers.<br>
       Settle in and join the team.
 
       <br><br>
@@ -768,8 +1020,7 @@ marquee{
       <br><br>
 
       <b>PLAY WITH HONOR</b><br>
-      Compete hard.
-      Respect your opponent.
+      Compete hard. Respect your opponent.
       Enjoy the game.
 
       <br><br>
@@ -779,7 +1030,11 @@ marquee{
       Together, the sky is the limit.
 
     </marquee>
+
   </section>
+
+
+  <!-- QUICK LINKS -->
 
   <nav
     class="quicklinks pop"
@@ -824,6 +1079,9 @@ marquee{
 
   </nav>
 
+
+  <!-- MOST WANTED / NEW MEMBERS -->
+
   <section
     class="wanted-wrap"
     aria-label="Five newest Panhandle Gunslingers members"
@@ -832,7 +1090,7 @@ marquee{
     <img
       class="wanted-art"
       src="assets/most-wanted-new-members.png"
-      alt="Most Wanted New Members board"
+      alt="Most Wanted New Members"
     >
 
     <div
@@ -850,6 +1108,9 @@ marquee{
 
   </section>
 
+
+  <!-- GUNSLINGER DUEL -->
+
   <div class="duel-stage pop">
 
     <img
@@ -859,6 +1120,9 @@ marquee{
     >
 
   </div>
+
+
+  <!-- FOOTER -->
 
   <footer class="footer">
 
@@ -872,138 +1136,173 @@ marquee{
 
 </main>
 
+</div>
+
+
 <script>
 (() => {
 
-  /* ==================================
-     CHESS.COM NEW MEMBER BOARD
-  ================================== */
+/* =========================================
+   CHESS.COM NEW MEMBERS
+========================================= */
 
-  const CLUB = "panhandle-gunslingers";
+const CLUB =
+  "panhandle-gunslingers";
 
-  const MEMBERS_API =
-    `https://api.chess.com/pub/club/${CLUB}/members`;
+const MEMBERS_API =
+  `https://api.chess.com/pub/club/${CLUB}/members`;
 
-  const membersEl =
-    document.getElementById("members");
+const membersEl =
+  document.getElementById("members");
 
-  const stateEl =
-    document.getElementById("wantedState");
+const stateEl =
+  document.getElementById("wantedState");
 
-  const defaultAvatar =
-    "data:image/svg+xml;charset=utf-8," +
-    encodeURIComponent(`
-      <svg xmlns="http://www.w3.org/2000/svg"
-           viewBox="0 0 100 100">
 
-        <defs>
-          <radialGradient id="g">
-            <stop stop-color="#555"/>
-            <stop offset="1"
-                  stop-color="#171717"/>
-          </radialGradient>
-        </defs>
+/* FALLBACK AVATAR */
 
-        <circle
-          cx="50"
-          cy="50"
-          r="49"
-          fill="url(#g)"
+const defaultAvatar =
+  "data:image/svg+xml;charset=utf-8," +
+  encodeURIComponent(`
+
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 100 100"
+  >
+
+    <defs>
+
+      <radialGradient id="g">
+
+        <stop
+          stop-color="#555"
         />
 
-        <circle
-          cx="50"
-          cy="39"
-          r="18"
-          fill="#b99251"
-          opacity=".55"
+        <stop
+          offset="1"
+          stop-color="#171717"
         />
 
-        <path
-          d="M20 91c4-23 17-34 30-34s26 11 30 34"
-          fill="#b99251"
-          opacity=".55"
-        />
+      </radialGradient>
 
-      </svg>
-    `);
+    </defs>
 
-  function flattenMembers(data){
+    <circle
+      cx="50"
+      cy="50"
+      r="49"
+      fill="url(#g)"
+    />
 
-    const groups =
-      ["all_time","weekly","monthly"];
+    <circle
+      cx="50"
+      cy="39"
+      r="18"
+      fill="#b99251"
+      opacity=".55"
+    />
 
-    const map =
-      new Map();
+    <path
+      d="M20 91c4-23 17-34 30-34s26 11 30 34"
+      fill="#b99251"
+      opacity=".55"
+    />
 
-    for(const key of groups){
+  </svg>
 
-      const arr =
-        Array.isArray(data?.[key])
-          ? data[key]
-          : [];
+`);
 
-      for(const member of arr){
 
-        if(member?.username){
+/* =========================================
+   NORMALIZE CLUB MEMBER DATA
+========================================= */
 
-          map.set(
-            member.username.toLowerCase(),
-            member
-          );
+function flattenMembers(data){
 
-        }
+  const groups = [
+    "all_time",
+    "weekly",
+    "monthly"
+  ];
+
+  const map =
+    new Map();
+
+  for(const key of groups){
+
+    const arr =
+      Array.isArray(data?.[key])
+        ? data[key]
+        : [];
+
+    for(const member of arr){
+
+      if(member?.username){
+
+        map.set(
+          member.username.toLowerCase(),
+          member
+        );
 
       }
 
     }
 
-    if(Array.isArray(data?.members)){
+  }
 
-      for(const member of data.members){
+  if(Array.isArray(data?.members)){
 
-        if(member?.username){
+    for(const member of data.members){
 
-          map.set(
-            member.username.toLowerCase(),
-            member
-          );
+      if(member?.username){
 
-        }
+        map.set(
+          member.username.toLowerCase(),
+          member
+        );
 
       }
 
     }
 
-    return [...map.values()];
-
   }
 
-  function joinedValue(member){
+  return [...map.values()];
 
-    const value =
-      Number(
-        member?.joined ??
-        member?.joined_at ??
-        0
-      );
+}
 
-    return Number.isFinite(value)
-      ? value
-      : 0;
 
+/* =========================================
+   JOIN DATE
+========================================= */
+
+function joinedValue(member){
+
+  const value =
+    Number(
+      member?.joined ??
+      member?.joined_at ??
+      0
+    );
+
+  return Number.isFinite(value)
+    ? value
+    : 0;
+
+}
+
+
+function joinedText(timestamp){
+
+  if(!timestamp){
+    return "Newest member";
   }
 
-  function joinedText(timestamp){
+  try{
 
-    if(!timestamp){
-      return "Newest member";
-    }
-
-    try{
-
-      return "Joined " +
-        new Date(timestamp * 1000)
+    return (
+      "Joined " +
+      new Date(timestamp * 1000)
         .toLocaleDateString(
           undefined,
           {
@@ -1011,50 +1310,69 @@ marquee{
             day:"numeric",
             year:"numeric"
           }
-        );
-
-    }catch{
-
-      return "Newest member";
-
-    }
+        )
+    );
 
   }
 
-  async function profile(username){
+  catch{
 
-    try{
-
-      const response =
-        await fetch(
-          `https://api.chess.com/pub/player/${encodeURIComponent(username)}`
-        );
-
-      if(!response.ok){
-        throw new Error("profile");
-      }
-
-      return await response.json();
-
-    }catch{
-
-      return {};
-
-    }
+    return "Newest member";
 
   }
 
-  function render(list){
+}
 
-    membersEl.innerHTML = "";
 
-    list.forEach((member,index) => {
+/* =========================================
+   PLAYER PROFILE
+========================================= */
+
+async function profile(username){
+
+  try{
+
+    const response =
+      await fetch(
+        `https://api.chess.com/pub/player/${encodeURIComponent(username)}`
+      );
+
+    if(!response.ok){
+      throw new Error("profile");
+    }
+
+    return await response.json();
+
+  }
+
+  catch{
+
+    return {};
+
+  }
+
+}
+
+
+/* =========================================
+   RENDER MEMBERS
+========================================= */
+
+function render(list){
+
+  membersEl.innerHTML = "";
+
+  list.forEach(
+    (member,index) => {
 
       const row =
         document.createElement("div");
 
       row.className =
         "member";
+
+
+      /* Avatar */
 
       const img =
         document.createElement("img");
@@ -1069,15 +1387,23 @@ marquee{
         defaultAvatar;
 
       img.onerror = () => {
+
         img.src =
           defaultAvatar;
+
       };
+
+
+      /* Copy */
 
       const copy =
         document.createElement("div");
 
       copy.className =
         "member-copy";
+
+
+      /* Username */
 
       const name =
         document.createElement("div");
@@ -1089,6 +1415,9 @@ marquee{
         member.username ||
         `Gunslinger ${index + 1}`;
 
+
+      /* Join date */
+
       const joined =
         document.createElement("div");
 
@@ -1099,6 +1428,7 @@ marquee{
         joinedText(
           joinedValue(member)
         );
+
 
       copy.append(
         name,
@@ -1112,41 +1442,47 @@ marquee{
 
       membersEl.append(row);
 
-    });
+    }
+  );
 
-    stateEl.hidden = true;
+  stateEl.hidden = true;
 
-    membersEl.hidden = false;
+  membersEl.hidden = false;
 
-  }
+}
 
-  async function loadMembers(){
 
-    try{
+/* =========================================
+   LOAD NEWEST FIVE
+========================================= */
 
-      const response =
-        await fetch(
-          MEMBERS_API,
-          {
-            headers:{
-              Accept:"application/json"
-            }
+async function loadMembers(){
+
+  try{
+
+    const response =
+      await fetch(
+        MEMBERS_API,
+        {
+          headers:{
+            Accept:"application/json"
           }
-        );
+        }
+      );
 
-      if(!response.ok){
+    if(!response.ok){
 
-        throw new Error(
-          `HTTP ${response.status}`
-        );
+      throw new Error(
+        `HTTP ${response.status}`
+      );
 
-      }
+    }
 
-      const data =
-        await response.json();
+    const data =
+      await response.json();
 
-      const newest =
-        flattenMembers(data)
+    const newest =
+      flattenMembers(data)
         .sort(
           (a,b) =>
             joinedValue(b) -
@@ -1154,309 +1490,372 @@ marquee{
         )
         .slice(0,5);
 
-      if(!newest.length){
+    if(!newest.length){
 
-        throw new Error(
-          "No member data"
-        );
-
-      }
-
-      const enriched =
-        await Promise.all(
-
-          newest.map(
-            async member => ({
-              ...member,
-              ...(await profile(
-                member.username
-              ))
-            })
-          )
-
-        );
-
-      render(enriched);
-
-    }catch(error){
-
-      console.error(error);
-
-      stateEl.textContent =
-        "Newest-member data is temporarily unavailable. Refresh the page to try again.";
+      throw new Error(
+        "No member data"
+      );
 
     }
 
-  }
 
-  loadMembers();
+    /* Pull profile/avatar data */
 
+    const enriched =
+      await Promise.all(
 
-  /* ==================================
-     INTENSE EMBER SYSTEM
-  ================================== */
+        newest.map(
+          async member => ({
 
-  const canvas =
-    document.getElementById("embers");
+            ...member,
 
-  const ctx =
-    canvas.getContext("2d");
+            ...(await profile(
+              member.username
+            ))
 
-  let width = 0;
-  let height = 0;
-  let dpr = 1;
-
-  let particles = [];
-
-  function resize(){
-
-    dpr =
-      Math.min(
-        window.devicePixelRatio || 1,
-        2
-      );
-
-    width =
-      window.innerWidth;
-
-    height =
-      window.innerHeight;
-
-    canvas.width =
-      Math.floor(width * dpr);
-
-    canvas.height =
-      Math.floor(height * dpr);
-
-    canvas.style.width =
-      width + "px";
-
-    canvas.style.height =
-      height + "px";
-
-    ctx.setTransform(
-      dpr,
-      0,
-      0,
-      dpr,
-      0,
-      0
-    );
-
-  }
-
-  function createParticle(resetBottom = true){
-
-    const hot =
-      Math.random() > .58;
-
-    return{
-
-      x:
-        Math.random() *
-        width,
-
-      y:
-        resetBottom
-          ? height +
-            Math.random() * 120
-          : Math.random() *
-            height,
-
-      size:
-        hot
-          ? Math.random() * 2.8 + 1.2
-          : Math.random() * 1.8 + .6,
-
-      speed:
-        Math.random() * 1.8 + .7,
-
-      drift:
-        (Math.random() - .5) * .9,
-
-      sway:
-        Math.random() * .022 + .006,
-
-      phase:
-        Math.random() *
-        Math.PI * 2,
-
-      alpha:
-        Math.random() * .65 + .25,
-
-      glow:
-        hot
-          ? Math.random() * 13 + 7
-          : Math.random() * 6 + 3,
-
-      hot
-
-    };
-
-  }
-
-  function populate(){
-
-    const count =
-      Math.max(
-        115,
-        Math.floor(
-          (width * height) /
-          5000
+          })
         )
+
       );
 
-    particles =
-      Array.from(
-        {length:count},
-        () =>
-          createParticle(false)
-      );
+    render(enriched);
 
   }
 
-  function draw(){
+  catch(error){
 
-    ctx.clearRect(
-      0,
-      0,
-      width,
-      height
+    console.error(error);
+
+    stateEl.textContent =
+      "Newest-member data is temporarily unavailable. Refresh to try again.";
+
+  }
+
+}
+
+loadMembers();
+
+
+/* =========================================
+   INTENSE EMBER SYSTEM
+========================================= */
+
+const canvas =
+  document.getElementById("embers");
+
+const ctx =
+  canvas.getContext("2d");
+
+let width = 0;
+let height = 0;
+let dpr = 1;
+
+let particles = [];
+
+
+/* Resize */
+
+function resize(){
+
+  dpr =
+    Math.min(
+      window.devicePixelRatio || 1,
+      2
     );
 
-    ctx.save();
+  width =
+    window.innerWidth;
 
-    ctx.globalCompositeOperation =
-      "lighter";
+  height =
+    window.innerHeight;
 
-    for(const p of particles){
+  canvas.width =
+    Math.floor(
+      width * dpr
+    );
 
-      p.phase +=
-        p.sway;
+  canvas.height =
+    Math.floor(
+      height * dpr
+    );
 
-      p.y -=
-        p.speed;
+  canvas.style.width =
+    width + "px";
 
-      p.x +=
-        p.drift +
-        Math.sin(p.phase) *
-        .45;
+  canvas.style.height =
+    height + "px";
 
-      if(
-        p.y < -30 ||
-        p.x < -50 ||
-        p.x > width + 50
-      ){
-
-        Object.assign(
-          p,
-          createParticle(true)
-        );
-
-      }
-
-      const gradient =
-        ctx.createRadialGradient(
-          p.x,
-          p.y,
-          0,
-          p.x,
-          p.y,
-          p.glow
-        );
-
-      if(p.hot){
-
-        gradient.addColorStop(
-          0,
-          `rgba(255,240,175,${p.alpha})`
-        );
-
-        gradient.addColorStop(
-          .18,
-          `rgba(255,170,55,${p.alpha})`
-        );
-
-        gradient.addColorStop(
-          .55,
-          `rgba(255,68,10,${p.alpha * .70})`
-        );
-
-        gradient.addColorStop(
-          1,
-          "rgba(120,15,0,0)"
-        );
-
-      }else{
-
-        gradient.addColorStop(
-          0,
-          `rgba(255,150,50,${p.alpha})`
-        );
-
-        gradient.addColorStop(
-          .45,
-          `rgba(230,50,8,${p.alpha * .65})`
-        );
-
-        gradient.addColorStop(
-          1,
-          "rgba(100,8,0,0)"
-        );
-
-      }
-
-      ctx.fillStyle =
-        gradient;
-
-      ctx.beginPath();
-
-      ctx.arc(
-        p.x,
-        p.y,
-        p.glow,
-        0,
-        Math.PI * 2
-      );
-
-      ctx.fill();
-
-      ctx.fillStyle =
-        p.hot
-          ? `rgba(255,220,130,${Math.min(1,p.alpha + .2)})`
-          : `rgba(255,110,35,${p.alpha})`;
-
-      ctx.beginPath();
-
-      ctx.arc(
-        p.x,
-        p.y,
-        p.size,
-        0,
-        Math.PI * 2
-      );
-
-      ctx.fill();
-
-    }
-
-    ctx.restore();
-
-    requestAnimationFrame(draw);
-
-  }
-
-  window.addEventListener(
-    "resize",
-    () => {
-      resize();
-      populate();
-    }
+  ctx.setTransform(
+    dpr,
+    0,
+    0,
+    dpr,
+    0,
+    0
   );
 
-  resize();
-  populate();
-  draw();
+}
+
+
+/* Create ember */
+
+function createParticle(
+  resetBottom = true
+){
+
+  const hot =
+    Math.random() > .55;
+
+  return{
+
+    x:
+      Math.random() *
+      width,
+
+    y:
+      resetBottom
+        ? height +
+          Math.random() * 120
+        : Math.random() *
+          height,
+
+    size:
+      hot
+        ? Math.random() * 3 + 1.2
+        : Math.random() * 1.8 + .6,
+
+    speed:
+      Math.random() * 2.1 + .8,
+
+    drift:
+      (Math.random() - .5) * 1,
+
+    sway:
+      Math.random() * .022 + .006,
+
+    phase:
+      Math.random() *
+      Math.PI * 2,
+
+    alpha:
+      Math.random() * .7 + .28,
+
+    glow:
+      hot
+        ? Math.random() * 14 + 7
+        : Math.random() * 7 + 3,
+
+    hot
+
+  };
+
+}
+
+
+/* More particles = stronger fire effect */
+
+function populate(){
+
+  const count =
+    Math.max(
+      140,
+      Math.floor(
+        (width * height) /
+        4200
+      )
+    );
+
+  particles =
+    Array.from(
+      {length:count},
+      () =>
+        createParticle(false)
+    );
+
+}
+
+
+/* Draw */
+
+function draw(){
+
+  ctx.clearRect(
+    0,
+    0,
+    width,
+    height
+  );
+
+  ctx.save();
+
+  ctx.globalCompositeOperation =
+    "lighter";
+
+  for(const p of particles){
+
+    p.phase +=
+      p.sway;
+
+    p.y -=
+      p.speed;
+
+    p.x +=
+      p.drift +
+      Math.sin(p.phase) * .45;
+
+
+    /* Reset ember */
+
+    if(
+      p.y < -30 ||
+      p.x < -50 ||
+      p.x > width + 50
+    ){
+
+      Object.assign(
+        p,
+        createParticle(true)
+      );
+
+    }
+
+
+    /* Glow */
+
+    const gradient =
+      ctx.createRadialGradient(
+        p.x,
+        p.y,
+        0,
+        p.x,
+        p.y,
+        p.glow
+      );
+
+
+    if(p.hot){
+
+      gradient.addColorStop(
+        0,
+        `rgba(255,245,190,${p.alpha})`
+      );
+
+      gradient.addColorStop(
+        .18,
+        `rgba(255,178,58,${p.alpha})`
+      );
+
+      gradient.addColorStop(
+        .55,
+        `rgba(255,68,10,${p.alpha * .72})`
+      );
+
+      gradient.addColorStop(
+        1,
+        "rgba(120,15,0,0)"
+      );
+
+    }
+
+    else{
+
+      gradient.addColorStop(
+        0,
+        `rgba(255,150,50,${p.alpha})`
+      );
+
+      gradient.addColorStop(
+        .45,
+        `rgba(230,50,8,${p.alpha * .65})`
+      );
+
+      gradient.addColorStop(
+        1,
+        "rgba(100,8,0,0)"
+      );
+
+    }
+
+
+    ctx.fillStyle =
+      gradient;
+
+    ctx.beginPath();
+
+    ctx.arc(
+      p.x,
+      p.y,
+      p.glow,
+      0,
+      Math.PI * 2
+    );
+
+    ctx.fill();
+
+
+    /* Ember core */
+
+    ctx.fillStyle =
+      p.hot
+
+        ? `rgba(
+            255,
+            220,
+            130,
+            ${Math.min(
+              1,
+              p.alpha + .2
+            )}
+          )`
+
+        : `rgba(
+            255,
+            110,
+            35,
+            ${p.alpha}
+          )`;
+
+    ctx.beginPath();
+
+    ctx.arc(
+      p.x,
+      p.y,
+      p.size,
+      0,
+      Math.PI * 2
+    );
+
+    ctx.fill();
+
+  }
+
+  ctx.restore();
+
+  requestAnimationFrame(
+    draw
+  );
+
+}
+
+
+/* Start */
+
+window.addEventListener(
+  "resize",
+  () => {
+
+    resize();
+
+    populate();
+
+  }
+);
+
+resize();
+
+populate();
+
+draw();
 
 })();
 </script>
