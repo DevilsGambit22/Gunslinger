@@ -35,9 +35,10 @@ body{
   font-family:Arial,Helvetica,sans-serif;
 }
 
-/* =========================================
-   HIDDEN INTERNAL SCROLL AREA
-========================================= */
+/* =====================================================
+   INTERNAL SCROLL AREA
+   Visible 4px Western scrollbar
+===================================================== */
 
 .sidebar-scroll{
   position:relative;
@@ -49,13 +50,13 @@ body{
 
   -webkit-overflow-scrolling:touch;
 
-  scrollbar-width:none;
-  -ms-overflow-style:none;
+  scrollbar-width:thin;
+  scrollbar-color:#a65a2a #170905;
 
   background:
     radial-gradient(
       circle at 50% -10%,
-      rgba(152,34,12,.88) 0,
+      rgba(152,34,12,.88) 0%,
       rgba(81,15,7,.75) 24%,
       rgba(38,8,4,.97) 53%,
       #080201 100%
@@ -63,14 +64,38 @@ body{
 }
 
 .sidebar-scroll::-webkit-scrollbar{
-  width:0;
-  height:0;
-  display:none;
+  width:4px;
 }
 
-/* =========================================
+.sidebar-scroll::-webkit-scrollbar-track{
+  background:#170905;
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb{
+  background:
+    linear-gradient(
+      180deg,
+      #f2c46f 0%,
+      #a65a2a 45%,
+      #6c2913 100%
+    );
+
+  border-radius:10px;
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb:hover{
+  background:
+    linear-gradient(
+      180deg,
+      #ffe0a0 0%,
+      #c87336 45%,
+      #87351a 100%
+    );
+}
+
+/* =====================================================
    EMBERS
-========================================= */
+===================================================== */
 
 #embers{
   position:fixed;
@@ -81,9 +106,9 @@ body{
   pointer-events:none;
 }
 
-/* =========================================
+/* =====================================================
    MAIN SIDEBAR
-========================================= */
+===================================================== */
 
 .sidebar{
   position:relative;
@@ -116,9 +141,9 @@ body{
     inset 0 1px 0 rgba(255,220,150,.10);
 }
 
-/* =========================================
-   HOVER POP
-========================================= */
+/* =====================================================
+   POP OUT EFFECT
+===================================================== */
 
 .pop{
   transition:
@@ -142,9 +167,9 @@ body{
     drop-shadow(0 0 12px rgba(226,80,25,.24));
 }
 
-/* =========================================
+/* =====================================================
    ANIMATIONS
-========================================= */
+===================================================== */
 
 @keyframes floatBoard{
   0%,100%{
@@ -198,9 +223,9 @@ body{
   }
 }
 
-/* =========================================
+/* =====================================================
    HERO
-========================================= */
+===================================================== */
 
 .hero{
   position:relative;
@@ -219,8 +244,7 @@ body{
       rgba(16,5,3,.18) 100%
     );
 
-  border:
-    1px solid rgba(203,126,55,.28);
+  border:1px solid rgba(203,126,55,.28);
 
   box-shadow:
     inset 0 0 24px rgba(255,104,30,.05),
@@ -231,8 +255,7 @@ body{
 }
 
 .hero:hover{
-  border-color:
-    rgba(242,196,111,.55);
+  border-color:rgba(242,196,111,.55);
 }
 
 .logo{
@@ -267,15 +290,15 @@ body{
 }
 
 .title{
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
+  font-family:Georgia,"Times New Roman",serif;
 
   font-size:25px;
   line-height:1;
+
   font-weight:900;
+
   letter-spacing:.6px;
+
   color:var(--gold);
 
   text-shadow:
@@ -284,11 +307,14 @@ body{
 }
 
 .subtitle{
+  margin-top:5px;
+
   font-size:11px;
   font-weight:800;
+
   letter-spacing:3px;
+
   color:#fff;
-  margin-top:5px;
 }
 
 .motto{
@@ -296,33 +322,27 @@ body{
 
   padding:9px 8px;
 
-  border-top:
-    1px solid var(--line);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
 
-  border-bottom:
-    1px solid var(--line);
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
+  font-family:Georgia,"Times New Roman",serif;
 
   font-style:italic;
+
   font-size:13px;
   line-height:1.45;
 }
 
-/* =========================================
+/* =====================================================
    FRONTIER DISPATCH
-========================================= */
+===================================================== */
 
 .dispatch{
   margin:10px 0 12px;
 
   padding:10px 8px;
 
-  border:
-    1px solid rgba(185,129,59,.50);
+  border:1px solid rgba(185,129,59,.50);
 
   border-radius:12px;
 
@@ -342,15 +362,13 @@ body{
 }
 
 .dispatch:hover{
-  border-color:
-    rgba(242,196,111,.70);
+  border-color:rgba(242,196,111,.70);
 }
 
 .dispatch h2{
   margin:0 0 7px;
 
-  font:
-    800 12px/1.1 Arial,sans-serif;
+  font:800 12px/1.1 Arial,sans-serif;
 
   letter-spacing:1.5px;
 
@@ -364,10 +382,15 @@ body{
 
 marquee{
   display:block;
+
   height:126px;
+
   line-height:1.55;
+
   font-size:12px;
+
   text-align:center;
+
   color:#ead8ba;
 }
 
@@ -375,9 +398,9 @@ marquee{
   color:var(--gold);
 }
 
-/* =========================================
+/* =====================================================
    QUICK LINKS
-========================================= */
+===================================================== */
 
 .quicklinks{
   display:grid;
@@ -400,16 +423,14 @@ marquee{
       rgba(19,6,4,.94)
     );
 
-  border:
-    1px solid rgba(185,129,59,.32);
+  border:1px solid rgba(185,129,59,.32);
 
   animation:
     floatBoard 4.9s ease-in-out infinite;
 }
 
 .quicklinks:hover{
-  border-color:
-    rgba(242,196,111,.50);
+  border-color:rgba(242,196,111,.50);
 }
 
 .btn{
@@ -428,8 +449,7 @@ marquee{
 
   border-radius:10px;
 
-  border:
-    1px solid #d3a05a;
+  border:1px solid #d3a05a;
 
   background:
     linear-gradient(
@@ -447,8 +467,11 @@ marquee{
   text-decoration:none;
 
   font-weight:900;
+
   font-size:11px;
+
   letter-spacing:.3px;
+
   text-align:center;
 
   transition:
@@ -469,8 +492,7 @@ marquee{
   width:42%;
   height:220%;
 
-  transform:
-    rotate(24deg);
+  transform:rotate(24deg);
 
   background:
     linear-gradient(
@@ -480,8 +502,7 @@ marquee{
       transparent
     );
 
-  transition:
-    left .45s ease;
+  transition:left .45s ease;
 }
 
 .btn:hover::before{
@@ -493,8 +514,7 @@ marquee{
     translateY(-5px)
     scale(1.045);
 
-  filter:
-    brightness(1.16);
+  filter:brightness(1.16);
 
   border-color:#ffd890;
 
@@ -504,9 +524,9 @@ marquee{
     0 0 15px rgba(232,84,25,.24);
 }
 
-/* =========================================
+/* =====================================================
    MOST WANTED BOARD
-========================================= */
+===================================================== */
 
 .wanted-wrap{
   position:relative;
@@ -552,13 +572,22 @@ marquee{
 
 .wanted-art{
   position:absolute;
+
   inset:0;
+
   width:100%;
   height:100%;
+
   object-fit:contain;
+
   pointer-events:none;
+
   user-select:none;
 }
+
+/* =====================================================
+   NEW MEMBER OVERLAY
+===================================================== */
 
 .members{
   position:absolute;
@@ -609,14 +638,16 @@ marquee{
       rgba(178,48,18,.07)
     );
 
-  filter:
-    brightness(1.12);
+  filter:brightness(1.12);
 }
 
 .avatar{
   width:82%;
+
   aspect-ratio:1;
+
   border-radius:50%;
+
   object-fit:cover;
 
   background:
@@ -626,8 +657,7 @@ marquee{
       #151515 70%
     );
 
-  border:
-    1px solid rgba(242,196,111,.45);
+  border:1px solid rgba(242,196,111,.45);
 
   justify-self:center;
 
@@ -641,11 +671,9 @@ marquee{
 }
 
 .member:hover .avatar{
-  transform:
-    scale(1.08);
+  transform:scale(1.08);
 
-  border-color:
-    rgba(255,218,137,.85);
+  border-color:rgba(255,218,137,.85);
 
   box-shadow:
     0 4px 10px rgba(0,0,0,.45),
@@ -654,15 +682,14 @@ marquee{
 
 .member-copy{
   min-width:0;
+
   padding-left:4px;
+
   text-align:left;
 }
 
 .username{
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
+  font-family:Georgia,"Times New Roman",serif;
 
   color:#f8e4b1;
 
@@ -717,21 +744,22 @@ marquee{
 
   border-radius:9px;
 
-  background:
-    rgba(12,6,4,.82);
+  background:rgba(12,6,4,.82);
 
-  border:
-    1px solid rgba(242,196,111,.4);
+  border:1px solid rgba(242,196,111,.4);
 
   font-size:11px;
+
   line-height:1.35;
+
   color:#f0d8aa;
+
   text-align:center;
 }
 
-/* =========================================
+/* =====================================================
    DUEL
-========================================= */
+===================================================== */
 
 .duel-stage{
   margin-top:4px;
@@ -765,6 +793,7 @@ marquee{
 
 .duel{
   width:106%;
+
   max-width:none;
 
   margin:
@@ -796,9 +825,9 @@ marquee{
     drop-shadow(0 0 15px rgba(235,82,27,.20));
 }
 
-/* =========================================
+/* =====================================================
    FOOTER
-========================================= */
+===================================================== */
 
 .footer{
   text-align:center;
@@ -811,7 +840,9 @@ marquee{
     1px solid rgba(185,129,59,.28);
 
   font-size:9px;
+
   letter-spacing:1.1px;
+
   color:#a99070;
 }
 
@@ -833,9 +864,9 @@ marquee{
   margin:0 4px;
 }
 
-/* =========================================
+/* =====================================================
    MOBILE
-========================================= */
+===================================================== */
 
 @media(max-width:280px){
 
@@ -861,7 +892,6 @@ marquee{
     left:23.5%;
     right:17.7%;
   }
-
 }
 
 @media(prefers-reduced-motion:reduce){
@@ -873,7 +903,6 @@ marquee{
     transition:none !important;
     scroll-behavior:auto !important;
   }
-
 }
 </style>
 </head>
@@ -885,6 +914,10 @@ marquee{
 <div class="sidebar-scroll">
 
 <main class="sidebar">
+
+  <!-- =========================
+       HERO
+  ========================== -->
 
   <header class="hero pop">
 
@@ -908,6 +941,11 @@ marquee{
     </div>
 
   </header>
+
+
+  <!-- =========================
+       FRONTIER DISPATCH
+  ========================== -->
 
   <section class="dispatch pop">
 
@@ -960,6 +998,11 @@ marquee{
 
   </section>
 
+
+  <!-- =========================
+       QUICK LINKS
+  ========================== -->
+
   <nav
     class="quicklinks pop"
     aria-label="Club links"
@@ -1003,6 +1046,11 @@ marquee{
 
   </nav>
 
+
+  <!-- =========================
+       MOST WANTED
+  ========================== -->
+
   <section
     class="wanted-wrap"
     aria-label="Five newest Panhandle Gunslingers members"
@@ -1029,6 +1077,11 @@ marquee{
 
   </section>
 
+
+  <!-- =========================
+       GUNSLINGER DUEL
+  ========================== -->
+
   <div class="duel-stage pop">
 
     <img
@@ -1038,6 +1091,11 @@ marquee{
     >
 
   </div>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
 
   <footer class="footer">
 
@@ -1053,12 +1111,13 @@ marquee{
 
 </div>
 
+
 <script>
 (() => {
 
-/* =========================================
+/* =====================================================
    CHESS.COM NEW MEMBERS
-========================================= */
+===================================================== */
 
 const CLUB =
   "panhandle-gunslingers";
@@ -1073,7 +1132,9 @@ const stateEl =
   document.getElementById("wantedState");
 
 
-/* FALLBACK AVATAR */
+/* =====================================================
+   FALLBACK AVATAR
+===================================================== */
 
 const defaultAvatar =
   "data:image/svg+xml;charset=utf-8," +
@@ -1127,9 +1188,9 @@ const defaultAvatar =
 `);
 
 
-/* =========================================
-   NORMALIZE MEMBER DATA
-========================================= */
+/* =====================================================
+   NORMALIZE CLUB MEMBER DATA
+===================================================== */
 
 function flattenMembers(data){
 
@@ -1186,9 +1247,9 @@ function flattenMembers(data){
 }
 
 
-/* =========================================
+/* =====================================================
    JOIN DATE
-========================================= */
+===================================================== */
 
 function joinedValue(member){
 
@@ -1238,9 +1299,9 @@ function joinedText(timestamp){
 }
 
 
-/* =========================================
+/* =====================================================
    PLAYER PROFILE
-========================================= */
+===================================================== */
 
 async function profile(username){
 
@@ -1268,9 +1329,9 @@ async function profile(username){
 }
 
 
-/* =========================================
-   RENDER MEMBERS
-========================================= */
+/* =====================================================
+   RENDER NEW MEMBERS
+===================================================== */
 
 function render(list){
 
@@ -1285,6 +1346,8 @@ function render(list){
       row.className =
         "member";
 
+
+      /* Avatar */
 
       const img =
         document.createElement("img");
@@ -1306,12 +1369,16 @@ function render(list){
       };
 
 
+      /* Member copy */
+
       const copy =
         document.createElement("div");
 
       copy.className =
         "member-copy";
 
+
+      /* Username */
 
       const name =
         document.createElement("div");
@@ -1323,6 +1390,8 @@ function render(list){
         member.username ||
         `Gunslinger ${index + 1}`;
 
+
+      /* Joined */
 
       const joined =
         document.createElement("div");
@@ -1358,9 +1427,9 @@ function render(list){
 }
 
 
-/* =========================================
-   LOAD NEWEST FIVE
-========================================= */
+/* =====================================================
+   LOAD FIVE NEWEST MEMBERS
+===================================================== */
 
 async function loadMembers(){
 
@@ -1404,6 +1473,9 @@ async function loadMembers(){
 
     }
 
+
+    /* Get profile pictures */
+
     const enriched =
       await Promise.all(
 
@@ -1439,9 +1511,9 @@ async function loadMembers(){
 loadMembers();
 
 
-/* =========================================
-   INTENSE EMBERS
-========================================= */
+/* =====================================================
+   INTENSE EMBER SYSTEM
+===================================================== */
 
 const canvas =
   document.getElementById("embers");
@@ -1452,8 +1524,11 @@ const ctx =
 let width = 0;
 let height = 0;
 let dpr = 1;
+
 let particles = [];
 
+
+/* Resize canvas */
 
 function resize(){
 
@@ -1496,6 +1571,8 @@ function resize(){
 
 }
 
+
+/* Create ember */
 
 function createParticle(
   resetBottom = true
@@ -1550,6 +1627,8 @@ function createParticle(
 }
 
 
+/* Ember density */
+
 function populate(){
 
   const count =
@@ -1570,6 +1649,8 @@ function populate(){
 
 }
 
+
+/* Animate embers */
 
 function draw(){
 
@@ -1598,6 +1679,8 @@ function draw(){
       Math.sin(p.phase) * .45;
 
 
+    /* Reset */
+
     if(
       p.y < -30 ||
       p.x < -50 ||
@@ -1611,6 +1694,8 @@ function draw(){
 
     }
 
+
+    /* Ember glow */
 
     const gradient =
       ctx.createRadialGradient(
@@ -1683,10 +1768,27 @@ function draw(){
     ctx.fill();
 
 
+    /* Ember core */
+
     ctx.fillStyle =
       p.hot
-        ? `rgba(255,220,130,${Math.min(1,p.alpha + .2)})`
-        : `rgba(255,110,35,${p.alpha})`;
+
+        ? `rgba(
+            255,
+            220,
+            130,
+            ${Math.min(
+              1,
+              p.alpha + .2
+            )}
+          )`
+
+        : `rgba(
+            255,
+            110,
+            35,
+            ${p.alpha}
+          )`;
 
     ctx.beginPath();
 
@@ -1704,12 +1806,12 @@ function draw(){
 
   ctx.restore();
 
-  requestAnimationFrame(
-    draw
-  );
+  requestAnimationFrame(draw);
 
 }
 
+
+/* Start */
 
 window.addEventListener(
   "resize",
