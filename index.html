@@ -27,31 +27,6 @@ body{
   width:100%;
   height:100%;
   overflow:hidden;
-  background:#090300;
-}
-
-body{
-  color:var(--cream);
-  font-family:Arial,Helvetica,sans-serif;
-}
-
-/* =====================================================
-   INTERNAL SCROLL AREA
-   Visible 4px Western scrollbar
-===================================================== */
-
-.sidebar-scroll{
-  position:relative;
-  width:100%;
-  height:100vh;
-
-  overflow-y:auto;
-  overflow-x:hidden;
-
-  -webkit-overflow-scrolling:touch;
-
-  scrollbar-width:thin;
-  scrollbar-color:#a65a2a #170905;
 
   background:
     radial-gradient(
@@ -61,36 +36,9 @@ body{
       rgba(38,8,4,.97) 53%,
       #080201 100%
     );
-}
 
-.sidebar-scroll::-webkit-scrollbar{
-  width:4px;
-}
-
-.sidebar-scroll::-webkit-scrollbar-track{
-  background:#170905;
-}
-
-.sidebar-scroll::-webkit-scrollbar-thumb{
-  background:
-    linear-gradient(
-      180deg,
-      #f2c46f 0%,
-      #a65a2a 45%,
-      #6c2913 100%
-    );
-
-  border-radius:10px;
-}
-
-.sidebar-scroll::-webkit-scrollbar-thumb:hover{
-  background:
-    linear-gradient(
-      180deg,
-      #ffe0a0 0%,
-      #c87336 45%,
-      #87351a 100%
-    );
+  color:var(--cream);
+  font-family:Arial,Helvetica,sans-serif;
 }
 
 /* =====================================================
@@ -100,14 +48,17 @@ body{
 #embers{
   position:fixed;
   inset:0;
+
   width:100%;
   height:100%;
+
   z-index:0;
+
   pointer-events:none;
 }
 
 /* =====================================================
-   MAIN SIDEBAR
+   THE SIDEBAR ITSELF IS NOW THE SCROLL CONTAINER
 ===================================================== */
 
 .sidebar{
@@ -116,33 +67,73 @@ body{
 
   width:100%;
   max-width:340px;
+  height:100vh;
 
   margin:0 auto;
 
   padding:10px 8px 18px;
 
-  overflow:hidden;
+  overflow-y:auto;
+  overflow-x:hidden;
 
-  border:1px solid rgba(205,143,65,.58);
+  -webkit-overflow-scrolling:touch;
+
+  scrollbar-width:thin;
+  scrollbar-color:#c36c2c #170805;
+
+  border:1px solid rgba(205,143,65,.62);
   border-radius:16px;
 
   background:
     linear-gradient(
       180deg,
-      rgba(86,19,9,.97),
-      rgba(45,10,5,.98) 25%,
+      rgba(86,19,9,.98),
+      rgba(45,10,5,.99) 25%,
       rgba(23,6,3,.99) 58%,
       rgba(12,3,2,.99) 100%
     );
 
   box-shadow:
     0 20px 55px rgba(0,0,0,.65),
-    0 0 22px rgba(193,46,18,.22),
+    0 0 24px rgba(193,46,18,.25),
     inset 0 1px 0 rgba(255,220,150,.10);
 }
 
+/* Chrome / Edge / Safari */
+
+.sidebar::-webkit-scrollbar{
+  width:4px;
+}
+
+.sidebar::-webkit-scrollbar-track{
+  background:#170805;
+  border-radius:10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb{
+  background:
+    linear-gradient(
+      180deg,
+      #f2c46f 0%,
+      #c36c2c 45%,
+      #713018 100%
+    );
+
+  border-radius:10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover{
+  background:
+    linear-gradient(
+      180deg,
+      #ffe4a8 0%,
+      #dd8237 45%,
+      #913c1d 100%
+    );
+}
+
 /* =====================================================
-   POP OUT EFFECT
+   HOVER POP
 ===================================================== */
 
 .pop{
@@ -153,6 +144,7 @@ body{
     border-color .26s ease;
 
   transform-origin:center;
+
   will-change:transform;
 }
 
@@ -255,7 +247,8 @@ body{
 }
 
 .hero:hover{
-  border-color:rgba(242,196,111,.55);
+  border-color:
+    rgba(242,196,111,.55);
 }
 
 .logo{
@@ -290,7 +283,10 @@ body{
 }
 
 .title{
-  font-family:Georgia,"Times New Roman",serif;
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
 
   font-size:25px;
   line-height:1;
@@ -325,7 +321,10 @@ body{
   border-top:1px solid var(--line);
   border-bottom:1px solid var(--line);
 
-  font-family:Georgia,"Times New Roman",serif;
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
 
   font-style:italic;
 
@@ -342,7 +341,8 @@ body{
 
   padding:10px 8px;
 
-  border:1px solid rgba(185,129,59,.50);
+  border:
+    1px solid rgba(185,129,59,.50);
 
   border-radius:12px;
 
@@ -362,13 +362,15 @@ body{
 }
 
 .dispatch:hover{
-  border-color:rgba(242,196,111,.70);
+  border-color:
+    rgba(242,196,111,.70);
 }
 
 .dispatch h2{
   margin:0 0 7px;
 
-  font:800 12px/1.1 Arial,sans-serif;
+  font:
+    800 12px/1.1 Arial,sans-serif;
 
   letter-spacing:1.5px;
 
@@ -423,14 +425,16 @@ marquee{
       rgba(19,6,4,.94)
     );
 
-  border:1px solid rgba(185,129,59,.32);
+  border:
+    1px solid rgba(185,129,59,.32);
 
   animation:
     floatBoard 4.9s ease-in-out infinite;
 }
 
 .quicklinks:hover{
-  border-color:rgba(242,196,111,.50);
+  border-color:
+    rgba(242,196,111,.50);
 }
 
 .btn{
@@ -492,7 +496,8 @@ marquee{
   width:42%;
   height:220%;
 
-  transform:rotate(24deg);
+  transform:
+    rotate(24deg);
 
   background:
     linear-gradient(
@@ -502,7 +507,8 @@ marquee{
       transparent
     );
 
-  transition:left .45s ease;
+  transition:
+    left .45s ease;
 }
 
 .btn:hover::before{
@@ -514,7 +520,8 @@ marquee{
     translateY(-5px)
     scale(1.045);
 
-  filter:brightness(1.16);
+  filter:
+    brightness(1.16);
 
   border-color:#ffd890;
 
@@ -525,7 +532,7 @@ marquee{
 }
 
 /* =====================================================
-   MOST WANTED BOARD
+   MOST WANTED
 ===================================================== */
 
 .wanted-wrap{
@@ -586,7 +593,7 @@ marquee{
 }
 
 /* =====================================================
-   NEW MEMBER OVERLAY
+   MEMBER OVERLAY
 ===================================================== */
 
 .members{
@@ -638,7 +645,8 @@ marquee{
       rgba(178,48,18,.07)
     );
 
-  filter:brightness(1.12);
+  filter:
+    brightness(1.12);
 }
 
 .avatar{
@@ -657,7 +665,8 @@ marquee{
       #151515 70%
     );
 
-  border:1px solid rgba(242,196,111,.45);
+  border:
+    1px solid rgba(242,196,111,.45);
 
   justify-self:center;
 
@@ -671,9 +680,11 @@ marquee{
 }
 
 .member:hover .avatar{
-  transform:scale(1.08);
+  transform:
+    scale(1.08);
 
-  border-color:rgba(255,218,137,.85);
+  border-color:
+    rgba(255,218,137,.85);
 
   box-shadow:
     0 4px 10px rgba(0,0,0,.45),
@@ -689,7 +700,10 @@ marquee{
 }
 
 .username{
-  font-family:Georgia,"Times New Roman",serif;
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
 
   color:#f8e4b1;
 
@@ -744,9 +758,11 @@ marquee{
 
   border-radius:9px;
 
-  background:rgba(12,6,4,.82);
+  background:
+    rgba(12,6,4,.82);
 
-  border:1px solid rgba(242,196,111,.4);
+  border:
+    1px solid rgba(242,196,111,.4);
 
   font-size:11px;
 
@@ -758,7 +774,7 @@ marquee{
 }
 
 /* =====================================================
-   DUEL
+   GUNSLINGER DUEL
 ===================================================== */
 
 .duel-stage{
@@ -865,7 +881,7 @@ marquee{
 }
 
 /* =====================================================
-   MOBILE
+   SMALL WIDTHS
 ===================================================== */
 
 @media(max-width:280px){
@@ -901,7 +917,6 @@ marquee{
   *::after{
     animation:none !important;
     transition:none !important;
-    scroll-behavior:auto !important;
   }
 }
 </style>
@@ -911,13 +926,15 @@ marquee{
 
 <canvas id="embers"></canvas>
 
-<div class="sidebar-scroll">
+<!--
+  IMPORTANT:
+  The sidebar itself is the scrolling container.
+  There is no full-width scrolling wrapper anymore.
+-->
 
 <main class="sidebar">
 
-  <!-- =========================
-       HERO
-  ========================== -->
+  <!-- HERO -->
 
   <header class="hero pop">
 
@@ -943,9 +960,7 @@ marquee{
   </header>
 
 
-  <!-- =========================
-       FRONTIER DISPATCH
-  ========================== -->
+  <!-- FRONTIER DISPATCH -->
 
   <section class="dispatch pop">
 
@@ -999,9 +1014,7 @@ marquee{
   </section>
 
 
-  <!-- =========================
-       QUICK LINKS
-  ========================== -->
+  <!-- QUICK LINKS -->
 
   <nav
     class="quicklinks pop"
@@ -1047,9 +1060,7 @@ marquee{
   </nav>
 
 
-  <!-- =========================
-       MOST WANTED
-  ========================== -->
+  <!-- MOST WANTED NEW MEMBERS -->
 
   <section
     class="wanted-wrap"
@@ -1078,9 +1089,7 @@ marquee{
   </section>
 
 
-  <!-- =========================
-       GUNSLINGER DUEL
-  ========================== -->
+  <!-- DUEL -->
 
   <div class="duel-stage pop">
 
@@ -1093,9 +1102,7 @@ marquee{
   </div>
 
 
-  <!-- =========================
-       FOOTER
-  ========================== -->
+  <!-- FOOTER -->
 
   <footer class="footer">
 
@@ -1108,8 +1115,6 @@ marquee{
   </footer>
 
 </main>
-
-</div>
 
 
 <script>
@@ -1189,7 +1194,7 @@ const defaultAvatar =
 
 
 /* =====================================================
-   NORMALIZE CLUB MEMBER DATA
+   NORMALIZE MEMBER DATA
 ===================================================== */
 
 function flattenMembers(data){
@@ -1330,7 +1335,7 @@ async function profile(username){
 
 
 /* =====================================================
-   RENDER NEW MEMBERS
+   RENDER MEMBERS
 ===================================================== */
 
 function render(list){
@@ -1347,15 +1352,14 @@ function render(list){
         "member";
 
 
-      /* Avatar */
-
       const img =
         document.createElement("img");
 
       img.className =
         "avatar";
 
-      img.alt = "";
+      img.alt =
+        member.username || "";
 
       img.src =
         member.avatar ||
@@ -1369,16 +1373,12 @@ function render(list){
       };
 
 
-      /* Member copy */
-
       const copy =
         document.createElement("div");
 
       copy.className =
         "member-copy";
 
-
-      /* Username */
 
       const name =
         document.createElement("div");
@@ -1390,8 +1390,6 @@ function render(list){
         member.username ||
         `Gunslinger ${index + 1}`;
 
-
-      /* Joined */
 
       const joined =
         document.createElement("div");
@@ -1473,9 +1471,6 @@ async function loadMembers(){
 
     }
 
-
-    /* Get profile pictures */
-
     const enriched =
       await Promise.all(
 
@@ -1528,8 +1523,6 @@ let dpr = 1;
 let particles = [];
 
 
-/* Resize canvas */
-
 function resize(){
 
   dpr =
@@ -1571,8 +1564,6 @@ function resize(){
 
 }
 
-
-/* Create ember */
 
 function createParticle(
   resetBottom = true
@@ -1627,16 +1618,14 @@ function createParticle(
 }
 
 
-/* Ember density */
-
 function populate(){
 
   const count =
     Math.max(
-      140,
+      150,
       Math.floor(
         (width * height) /
-        4200
+        4000
       )
     );
 
@@ -1649,8 +1638,6 @@ function populate(){
 
 }
 
-
-/* Animate embers */
 
 function draw(){
 
@@ -1679,8 +1666,6 @@ function draw(){
       Math.sin(p.phase) * .45;
 
 
-    /* Reset */
-
     if(
       p.y < -30 ||
       p.x < -50 ||
@@ -1694,8 +1679,6 @@ function draw(){
 
     }
 
-
-    /* Ember glow */
 
     const gradient =
       ctx.createRadialGradient(
@@ -1768,27 +1751,10 @@ function draw(){
     ctx.fill();
 
 
-    /* Ember core */
-
     ctx.fillStyle =
       p.hot
-
-        ? `rgba(
-            255,
-            220,
-            130,
-            ${Math.min(
-              1,
-              p.alpha + .2
-            )}
-          )`
-
-        : `rgba(
-            255,
-            110,
-            35,
-            ${p.alpha}
-          )`;
+        ? `rgba(255,220,130,${Math.min(1,p.alpha + .2)})`
+        : `rgba(255,110,35,${p.alpha})`;
 
     ctx.beginPath();
 
@@ -1810,8 +1776,6 @@ function draw(){
 
 }
 
-
-/* Start */
 
 window.addEventListener(
   "resize",
