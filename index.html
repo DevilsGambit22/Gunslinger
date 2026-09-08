@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#140803">
+<title>Panhandle Gunslingers Sidebar</title>
+<style>
+:root{--gold:#f2c46f;--gold2:#b9813b;--cream:#f7e7c1;--red:#a51c12;--red2:#5b0905;--dark:#120806;--wood:#28150c;--line:rgba(242,196,111,.36)}
+*{box-sizing:border-box}html{background:#090300}body{margin:0;background:radial-gradient(circle at 50% -10%,#5a1208 0,#2b0905 30%,#120503 68%,#080201 100%);color:var(--cream);font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}.sidebar{width:100%;max-width:340px;margin:0 auto;padding:10px 8px 18px;position:relative;overflow:hidden;border:1px solid rgba(205,143,65,.45);border-radius:16px;background:linear-gradient(180deg,rgba(71,18,9,.97),rgba(35,9,5,.98) 28%,rgba(17,5,3,.99) 100%);box-shadow:0 18px 45px rgba(0,0,0,.48),inset 0 1px 0 rgba(255,220,150,.08)}.hero{text-align:center;padding:10px 10px 12px;border-radius:13px;background:radial-gradient(circle at 50% 0,rgba(211,76,25,.32),rgba(87,19,8,.18) 45%,rgba(16,5,3,.12) 100%);border:1px solid rgba(203,126,55,.22)}.logo{width:118px;max-width:42%;height:auto;display:block;margin:0 auto 4px;filter:drop-shadow(0 8px 14px rgba(0,0,0,.5))}.title{font-family:Georgia,"Times New Roman",serif;font-size:25px;line-height:1;font-weight:900;letter-spacing:.6px;color:var(--gold);text-shadow:0 2px 0 #3c1207,0 0 13px rgba(242,196,111,.25)}.subtitle{font-size:11px;font-weight:800;letter-spacing:3px;color:#fff;margin-top:5px}.motto{margin:10px auto 0;padding:9px 8px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:13px;line-height:1.45}.dispatch{margin:10px 0 12px;padding:10px 8px;border:1px solid rgba(185,129,59,.5);border-radius:12px;background:linear-gradient(180deg,rgba(54,23,11,.90),rgba(18,8,6,.86));box-shadow:0 10px 24px rgba(0,0,0,.25)}.dispatch h2{margin:0 0 7px;font:800 12px/1.1 Arial,sans-serif;letter-spacing:1.5px;color:var(--gold)}marquee{height:126px;line-height:1.55;font-size:12px;color:#ead8ba}.dispatch b{color:var(--gold)}.quicklinks{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:0 0 14px;padding:9px;border-radius:12px;background:linear-gradient(180deg,rgba(42,14,8,.82),rgba(19,6,4,.90));border:1px solid rgba(185,129,59,.28)}.btn{display:flex;align-items:center;justify-content:center;min-height:44px;padding:9px 7px;border-radius:10px;border:1px solid #d3a05a;background:linear-gradient(180deg,#8a5126,#633316);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 6px 15px rgba(0,0,0,.24);color:#fff;text-decoration:none;font-weight:900;font-size:11px;letter-spacing:.3px;text-align:center;transition:.18s transform,.18s filter}.btn:hover{transform:translateY(-2px) scale(1.02);filter:brightness(1.12)}
+.wanted-wrap{position:relative;width:100%;aspect-ratio:1168/1346;margin:1px auto 12px;padding:2px;border-radius:14px;background:radial-gradient(circle at 50% 25%,rgba(128,28,13,.34),rgba(19,5,3,.1) 58%,rgba(0,0,0,.25) 100%);filter:drop-shadow(0 13px 20px rgba(0,0,0,.48))}.wanted-art{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;user-select:none}.members{position:absolute;left:23.3%;right:18.2%;top:34.4%;bottom:16.9%;display:grid;grid-template-rows:repeat(5,1fr);gap:1.9%;z-index:2}.member{display:grid;grid-template-columns:21% 1fr;align-items:center;min-width:0}.avatar{width:82%;aspect-ratio:1;border-radius:50%;object-fit:cover;background:radial-gradient(circle at 35% 30%,#4b4b4b,#151515 70%);border:1px solid rgba(242,196,111,.45);justify-self:center}.member-copy{min-width:0;padding-left:4px;text-align:left}.username{font-family:Georgia,"Times New Roman",serif;color:#f8e4b1;font-weight:900;font-size:clamp(11px,3.9vw,16px);line-height:1.05;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 2px 3px #000}.joined{margin-top:3px;color:#cbb894;font-size:clamp(8px,2.5vw,10px);font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.wanted-state{position:absolute;z-index:3;left:23%;right:17%;top:54%;transform:translateY(-50%);padding:9px 7px;border-radius:9px;background:rgba(12,6,4,.82);border:1px solid rgba(242,196,111,.4);font-size:11px;line-height:1.35;color:#f0d8aa;text-align:center}.duel{width:106%;max-width:none;margin:4px -3% 0;display:block;filter:drop-shadow(0 10px 14px rgba(0,0,0,.55));pointer-events:none}.duel-stage{margin-top:4px;padding:8px 0 2px;border-radius:12px;background:linear-gradient(180deg,rgba(70,15,7,.20),rgba(5,2,1,.35));border-top:1px solid rgba(185,129,59,.18)}.footer{text-align:center;margin-top:-2px;padding-top:8px;border-top:1px solid rgba(185,129,59,.28);font-size:9px;letter-spacing:1.1px;color:#a99070}.dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:#c98238;box-shadow:0 0 8px rgba(255,124,34,.75);vertical-align:1px;margin:0 4px}
+@media(max-width:280px){.sidebar{padding-left:3px;padding-right:3px}.title{font-size:21px}.quicklinks{gap:5px}.btn{font-size:10px;padding:8px 4px}.members{left:23.5%;right:17.7%}}
+</style>
+</head>
+<body>
+<main class="sidebar">
+  <header class="hero">
+    <img class="logo" src="assets/panhandle-logo.png" alt="Panhandle Gunslingers">
+    <div class="title">PANHANDLE</div>
+    <div class="subtitle">GUNSLINGERS</div>
+    <div class="motto">Team. Friends. Chess.<br>Together, the sky is the limit.</div>
+  </header>
+
+  <section class="dispatch">
+    <h2>★ FRONTIER DISPATCH ★</h2>
+    <marquee direction="up" scrollamount="2" onmouseover="this.stop();" onmouseout="this.start();">
+      <b>WELCOME GUNSLINGERS</b><br>Welcome to Panhandle Gunslingers. Settle in and join the team.<br><br>
+      <b>RIDE TOGETHER</b><br>Support your teammates and represent the club with respect.<br><br>
+      <b>JOIN THE ACTION</b><br>Watch for upcoming team matches and club events.<br><br>
+      <b>STAY ACTIVE</b><br>Join discussions, play matches, and help build the team.<br><br>
+      <b>PLAY WITH HONOR</b><br>Compete hard. Respect your opponent. Enjoy the game.
+    </marquee>
+  </section>
+
+  <nav class="quicklinks" aria-label="Club links">
+    <a class="btn" href="https://www.chess.com/clubs/forum/panhandle-gunslingers" target="_blank" rel="noopener">💬 CLUB FORUMS</a>
+    <a class="btn" href="https://www.chess.com/club/notes/panhandle-gunslingers" target="_blank" rel="noopener">✎ CLUB NOTES</a>
+    <a class="btn" href="https://www.chess.com/clubs/events/panhandle-gunslingers" target="_blank" rel="noopener">⚔ CLUB EVENTS</a>
+    <a class="btn" href="https://www.chess.com/club/panhandle-gunslingers/announcements" target="_blank" rel="noopener">📜 ANNOUNCEMENTS</a>
+  </nav>
+
+  <section class="wanted-wrap" aria-label="Five newest Panhandle Gunslingers members">
+    <img class="wanted-art" src="assets/most-wanted-new-members.png" alt="Most Wanted New Members board">
+    <div id="members" class="members" hidden></div>
+    <div id="wantedState" class="wanted-state">Loading the five newest gunslingers…</div>
+  </section>
+
+  <div class="duel-stage"><img class="duel" src="assets/gunslinger-duel.png" alt="Two western gunslingers in a duel"></div>
+  <footer class="footer">PANHANDLE GUNSLINGERS <span class="dot"></span> CHESS.COM</footer>
+</main>
+
+<script>
+(() => {
+  const CLUB = 'panhandle-gunslingers';
+  const MEMBERS_API = `https://api.chess.com/pub/club/${CLUB}/members`;
+  const $members = document.getElementById('members');
+  const $state = document.getElementById('wantedState');
+  const defaultAvatar = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><radialGradient id="g"><stop stop-color="#555"/><stop offset="1" stop-color="#171717"/></radialGradient></defs><circle cx="50" cy="50" r="49" fill="url(#g)"/><circle cx="50" cy="39" r="18" fill="#b99251" opacity=".55"/><path d="M20 91c4-23 17-34 30-34s26 11 30 34" fill="#b99251" opacity=".55"/></svg>`);
+
+  function flattenMembers(data) {
+    const groups = ['all_time','weekly','monthly'];
+    const map = new Map();
+    for (const key of groups) {
+      const arr = Array.isArray(data?.[key]) ? data[key] : [];
+      for (const m of arr) if (m?.username) map.set(m.username.toLowerCase(), m);
+    }
+    // Some API revisions may return a direct members array.
+    if (Array.isArray(data?.members)) for (const m of data.members) if (m?.username) map.set(m.username.toLowerCase(), m);
+    return [...map.values()];
+  }
+
+  function joinedValue(m) {
+    const n = Number(m?.joined ?? m?.joined_at ?? 0);
+    return Number.isFinite(n) ? n : 0;
+  }
+
+  function joinedText(ts) {
+    if (!ts) return 'Newest member';
+    try { return 'Joined ' + new Date(ts * 1000).toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'}); }
+    catch { return 'Newest member'; }
+  }
+
+  async function profile(username) {
+    try {
+      const r = await fetch(`https://api.chess.com/pub/player/${encodeURIComponent(username)}`);
+      if (!r.ok) throw new Error('profile');
+      return await r.json();
+    } catch { return {}; }
+  }
+
+  function render(list) {
+    $members.innerHTML = '';
+    list.forEach((m, i) => {
+      const row = document.createElement('div');
+      row.className = 'member';
+      const img = document.createElement('img');
+      img.className = 'avatar'; img.alt = ''; img.src = m.avatar || defaultAvatar; img.onerror = () => { img.src = defaultAvatar; };
+      const copy = document.createElement('div'); copy.className = 'member-copy';
+      const name = document.createElement('div'); name.className = 'username'; name.textContent = m.username || `Gunslinger ${i+1}`;
+      const joined = document.createElement('div'); joined.className = 'joined'; joined.textContent = joinedText(joinedValue(m));
+      copy.append(name, joined); row.append(img, copy); $members.append(row);
+    });
+    $state.hidden = true; $members.hidden = false;
+  }
+
+  async function load() {
+    try {
+      const r = await fetch(MEMBERS_API, {headers:{Accept:'application/json'}});
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      const data = await r.json();
+      const newest = flattenMembers(data).sort((a,b)=>joinedValue(b)-joinedValue(a)).slice(0,5);
+      if (!newest.length) throw new Error('No member data');
+      const enriched = await Promise.all(newest.map(async m => ({...m, ...(await profile(m.username))})));
+      render(enriched);
+    } catch (err) {
+      console.error(err);
+      $state.textContent = 'Newest-member data is temporarily unavailable. The board will retry when the page is refreshed.';
+    }
+  }
+  load();
+})();
+</script>
+</body>
+</html>
