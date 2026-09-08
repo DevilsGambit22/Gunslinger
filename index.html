@@ -36,8 +36,7 @@ body{
 }
 
 /* =========================================
-   INTERNAL SCROLL AREA
-   This replaces the iframe scrollbar.
+   HIDDEN INTERNAL SCROLL AREA
 ========================================= */
 
 .sidebar-scroll{
@@ -48,8 +47,10 @@ body{
   overflow-y:auto;
   overflow-x:hidden;
 
-  scrollbar-width:thin;
-  scrollbar-color:#9a5726 #160804;
+  -webkit-overflow-scrolling:touch;
+
+  scrollbar-width:none;
+  -ms-overflow-style:none;
 
   background:
     radial-gradient(
@@ -61,36 +62,10 @@ body{
     );
 }
 
-/* Chrome / Edge / Safari */
-
 .sidebar-scroll::-webkit-scrollbar{
-  width:5px;
-}
-
-.sidebar-scroll::-webkit-scrollbar-track{
-  background:#160804;
-}
-
-.sidebar-scroll::-webkit-scrollbar-thumb{
-  background:
-    linear-gradient(
-      180deg,
-      #e0a14f,
-      #9a5726 50%,
-      #5a1e0c
-    );
-
-  border-radius:10px;
-}
-
-.sidebar-scroll::-webkit-scrollbar-thumb:hover{
-  background:
-    linear-gradient(
-      180deg,
-      #f2c46f,
-      #bd672e 50%,
-      #762b12
-    );
+  width:0;
+  height:0;
+  display:none;
 }
 
 /* =========================================
@@ -100,12 +75,9 @@ body{
 #embers{
   position:fixed;
   inset:0;
-
   width:100%;
   height:100%;
-
   z-index:0;
-
   pointer-events:none;
 }
 
@@ -301,13 +273,9 @@ body{
     serif;
 
   font-size:25px;
-
   line-height:1;
-
   font-weight:900;
-
   letter-spacing:.6px;
-
   color:var(--gold);
 
   text-shadow:
@@ -317,13 +285,9 @@ body{
 
 .subtitle{
   font-size:11px;
-
   font-weight:800;
-
   letter-spacing:3px;
-
   color:#fff;
-
   margin-top:5px;
 }
 
@@ -344,9 +308,7 @@ body{
     serif;
 
   font-style:italic;
-
   font-size:13px;
-
   line-height:1.45;
 }
 
@@ -402,15 +364,10 @@ body{
 
 marquee{
   display:block;
-
   height:126px;
-
   line-height:1.55;
-
   font-size:12px;
-
   text-align:center;
-
   color:#ead8ba;
 }
 
@@ -490,11 +447,8 @@ marquee{
   text-decoration:none;
 
   font-weight:900;
-
   font-size:11px;
-
   letter-spacing:.3px;
-
   text-align:center;
 
   transition:
@@ -598,20 +552,13 @@ marquee{
 
 .wanted-art{
   position:absolute;
-
   inset:0;
-
   width:100%;
   height:100%;
-
   object-fit:contain;
-
   pointer-events:none;
-
   user-select:none;
 }
-
-/* Member overlay */
 
 .members{
   position:absolute;
@@ -668,11 +615,8 @@ marquee{
 
 .avatar{
   width:82%;
-
   aspect-ratio:1;
-
   border-radius:50%;
-
   object-fit:cover;
 
   background:
@@ -710,9 +654,7 @@ marquee{
 
 .member-copy{
   min-width:0;
-
   padding-left:4px;
-
   text-align:left;
 }
 
@@ -782,16 +724,13 @@ marquee{
     1px solid rgba(242,196,111,.4);
 
   font-size:11px;
-
   line-height:1.35;
-
   color:#f0d8aa;
-
   text-align:center;
 }
 
 /* =========================================
-   DUEL ARTWORK
+   DUEL
 ========================================= */
 
 .duel-stage{
@@ -826,7 +765,6 @@ marquee{
 
 .duel{
   width:106%;
-
   max-width:none;
 
   margin:
@@ -873,9 +811,7 @@ marquee{
     1px solid rgba(185,129,59,.28);
 
   font-size:9px;
-
   letter-spacing:1.1px;
-
   color:#a99070;
 }
 
@@ -918,9 +854,7 @@ marquee{
 
   .btn{
     font-size:10px;
-
-    padding:
-      8px 4px;
+    padding:8px 4px;
   }
 
   .members{
@@ -929,8 +863,6 @@ marquee{
   }
 
 }
-
-/* Respect accessibility setting */
 
 @media(prefers-reduced-motion:reduce){
 
@@ -954,8 +886,6 @@ marquee{
 
 <main class="sidebar">
 
-  <!-- HERO -->
-
   <header class="hero pop">
 
     <img
@@ -978,9 +908,6 @@ marquee{
     </div>
 
   </header>
-
-
-  <!-- FRONTIER DISPATCH -->
 
   <section class="dispatch pop">
 
@@ -1033,9 +960,6 @@ marquee{
 
   </section>
 
-
-  <!-- QUICK LINKS -->
-
   <nav
     class="quicklinks pop"
     aria-label="Club links"
@@ -1079,9 +1003,6 @@ marquee{
 
   </nav>
 
-
-  <!-- MOST WANTED / NEW MEMBERS -->
-
   <section
     class="wanted-wrap"
     aria-label="Five newest Panhandle Gunslingers members"
@@ -1108,9 +1029,6 @@ marquee{
 
   </section>
 
-
-  <!-- GUNSLINGER DUEL -->
-
   <div class="duel-stage pop">
 
     <img
@@ -1120,9 +1038,6 @@ marquee{
     >
 
   </div>
-
-
-  <!-- FOOTER -->
 
   <footer class="footer">
 
@@ -1137,7 +1052,6 @@ marquee{
 </main>
 
 </div>
-
 
 <script>
 (() => {
@@ -1214,7 +1128,7 @@ const defaultAvatar =
 
 
 /* =========================================
-   NORMALIZE CLUB MEMBER DATA
+   NORMALIZE MEMBER DATA
 ========================================= */
 
 function flattenMembers(data){
@@ -1372,8 +1286,6 @@ function render(list){
         "member";
 
 
-      /* Avatar */
-
       const img =
         document.createElement("img");
 
@@ -1394,16 +1306,12 @@ function render(list){
       };
 
 
-      /* Copy */
-
       const copy =
         document.createElement("div");
 
       copy.className =
         "member-copy";
 
-
-      /* Username */
 
       const name =
         document.createElement("div");
@@ -1415,8 +1323,6 @@ function render(list){
         member.username ||
         `Gunslinger ${index + 1}`;
 
-
-      /* Join date */
 
       const joined =
         document.createElement("div");
@@ -1498,9 +1404,6 @@ async function loadMembers(){
 
     }
 
-
-    /* Pull profile/avatar data */
-
     const enriched =
       await Promise.all(
 
@@ -1537,7 +1440,7 @@ loadMembers();
 
 
 /* =========================================
-   INTENSE EMBER SYSTEM
+   INTENSE EMBERS
 ========================================= */
 
 const canvas =
@@ -1549,11 +1452,8 @@ const ctx =
 let width = 0;
 let height = 0;
 let dpr = 1;
-
 let particles = [];
 
-
-/* Resize */
 
 function resize(){
 
@@ -1596,8 +1496,6 @@ function resize(){
 
 }
 
-
-/* Create ember */
 
 function createParticle(
   resetBottom = true
@@ -1652,8 +1550,6 @@ function createParticle(
 }
 
 
-/* More particles = stronger fire effect */
-
 function populate(){
 
   const count =
@@ -1674,8 +1570,6 @@ function populate(){
 
 }
 
-
-/* Draw */
 
 function draw(){
 
@@ -1704,8 +1598,6 @@ function draw(){
       Math.sin(p.phase) * .45;
 
 
-    /* Reset ember */
-
     if(
       p.y < -30 ||
       p.x < -50 ||
@@ -1719,8 +1611,6 @@ function draw(){
 
     }
 
-
-    /* Glow */
 
     const gradient =
       ctx.createRadialGradient(
@@ -1793,27 +1683,10 @@ function draw(){
     ctx.fill();
 
 
-    /* Ember core */
-
     ctx.fillStyle =
       p.hot
-
-        ? `rgba(
-            255,
-            220,
-            130,
-            ${Math.min(
-              1,
-              p.alpha + .2
-            )}
-          )`
-
-        : `rgba(
-            255,
-            110,
-            35,
-            ${p.alpha}
-          )`;
+        ? `rgba(255,220,130,${Math.min(1,p.alpha + .2)})`
+        : `rgba(255,110,35,${p.alpha})`;
 
     ctx.beginPath();
 
@@ -1838,8 +1711,6 @@ function draw(){
 }
 
 
-/* Start */
-
 window.addEventListener(
   "resize",
   () => {
@@ -1852,9 +1723,7 @@ window.addEventListener(
 );
 
 resize();
-
 populate();
-
 draw();
 
 })();
